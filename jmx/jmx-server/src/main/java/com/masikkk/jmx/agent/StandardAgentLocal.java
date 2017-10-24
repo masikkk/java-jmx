@@ -11,7 +11,7 @@ public class StandardAgentLocal {
         MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
         //将一个HelloStandard实例作为MBean对象注册到本地MBean服务器中，并指定MBean的对象名
         mBeanServer.registerMBean(new HelloStandard(), new ObjectName("MBeanTest:name=StandardMBean"));
-        System.out.println("标准MBean已注册到本地！");
+        System.out.println("标准MBean已注册到本地！请使用JConsole连接本地进程测试！");
         Thread.sleep(60*60*1000);
     }
 }
