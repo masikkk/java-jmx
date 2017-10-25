@@ -14,5 +14,6 @@
 	</properties>
   <modules>
     <module>jmx-server</module>
+    <module>jmx-client</module>
   </modules>
 </project>
