@@ -7,6 +7,7 @@ import javax.management.ObjectName;
 
 public class AgentLocal {
     public static void main(String[] args) throws Exception{
+    	//获取平台MBeanServer
         MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
         //将一个Hello实例作为MBean对象注册到本地MBean服务器中，并指定MBean的对象名
         mBeanServer.registerMBean(new Hello(), new ObjectName("MBeanDomain:name=StandardMBeanLocal"));
