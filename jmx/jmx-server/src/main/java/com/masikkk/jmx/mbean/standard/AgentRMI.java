@@ -1,4 +1,4 @@
-package com.masikkk.jmx.agent;
+package com.masikkk.jmx.mbean.standard;
 
 import java.lang.management.ManagementFactory;
 import java.rmi.registry.LocateRegistry;
@@ -9,19 +9,19 @@ import javax.management.remote.JMXConnectorServer;
 import javax.management.remote.JMXConnectorServerFactory;
 import javax.management.remote.JMXServiceURL;
 
-import com.masikkk.jmx.mbean.standard.HelloStandard;
-
-public class StandardAgentRMI {
+public class AgentRMI {
 	public static void main(String[] args) throws Exception {
         MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
-        //将一个HelloStandard实例作为MBean对象注册到本地MBean服务器中，并指定MBean的对象名
-        mBeanServer.registerMBean(new HelloStandard(), new ObjectName("MBeanTest:name=StandardMBean"));
+        //将一个Hello实例作为MBean对象注册到本地MBean服务器中，并指定MBean的对象名
+        mBeanServer.registerMBean(new Hello(), new ObjectName("MBeanDomain:name=StandardMBeanRMI"));
 
         try {
         	//创建远程对象注册表Registry的实例，被创建的Registry将在指定的端口（默认1099）上侦听到来的请求
             LocateRegistry.createRegistry(8899);
             
-            String ip_port = "localhost" + ":" + "8899";
+            String ip = "localhost";
+            String port = "8899";
+            String ip_port = ip + ":" + port;
             String jmxAddress = "service:jmx:rmi://" + ip_port + "/jndi/rmi://" + ip_port + "/jmxrmi";
             //String jmxAddress = "service:jmx:rmi:///jndi/rmi://localhost:8899/jmxrmi";
             JMXServiceURL url = new JMXServiceURL(jmxAddress); //JMX连接器服务器地址
