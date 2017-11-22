@@ -18,8 +18,8 @@ public class Car{
 		System.out.println(color);
 	}
 	
-	public void printColor(String otherColor) {
-		System.out.println("Car.printColor(String)被调用");
-		System.out.println(otherColor);
+	public void printColor(String color1, String color2) {
+		System.out.println("Car.printColor(String, String)被调用");
+		System.out.println("color1: " + color1 + " color2: " + color2);
 	}
 }
